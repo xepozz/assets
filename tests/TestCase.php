@@ -4,7 +4,6 @@ declare(strict_types=1);
 
 namespace Yiisoft\Assets\Tests;
 
-use Yiisoft\Composer\Config\Builder;
 use PHPUnit\Framework\TestCase as BaseTestCase;
 use Psr\Container\ContainerInterface;
 use Psr\Log\LoggerInterface;
@@ -12,8 +11,9 @@ use Yiisoft\Aliases\Aliases;
 use Yiisoft\Assets\AssetBundle;
 use Yiisoft\Assets\AssetManager;
 use Yiisoft\Assets\AssetPublisherInterface;
-use Yiisoft\Files\FileHelper;
+use Yiisoft\Composer\Config\Builder;
 use Yiisoft\Di\Container;
+use Yiisoft\Files\FileHelper;
 
 abstract class TestCase extends BaseTestCase
 {
@@ -52,7 +52,10 @@ abstract class TestCase extends BaseTestCase
         parent::setUp();
 
         $this->container = new Container(
-            require Builder::path('web'),
+            array_merge(
+                [require Builder::path('common')],
+                [require __DIR__.'/../config/test.php'],
+            ),
         );
 
         $this->aliases = $this->container->get(Aliases::class);

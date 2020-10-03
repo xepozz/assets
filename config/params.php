@@ -5,14 +5,13 @@ declare(strict_types=1);
 return [
     'aliases' => [
         '@root' => dirname(__DIR__, 1),
-        '@asset' => '@root/tests/public/assets',
+        '@asset' => '@root/public/assets',
         '@assetUrl'  => '/baseUrl',
-        '@converter' => '@root/tests/public/assetconverter',
+        '@converter' => '@root/public/asset-converter',
         '@npm' => '@root/node_modules',
-        '@testSourcePath' => '@root/tests/public/assetsources'
     ],
 
-    'yiisoft/asset' => [
+    'yiisoft/assets' => [
         'assetConverter' => [
             'command' => [
                 'from' => '',
