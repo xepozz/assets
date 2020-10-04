@@ -53,7 +53,7 @@ abstract class TestCase extends BaseTestCase
 
         $this->container = new Container(
             array_merge(
-                [require Builder::path('common')],
+                [require Builder::path('web')],
                 [require __DIR__.'/../config/test.php'],
             ),
         );
